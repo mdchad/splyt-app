@@ -1,44 +1,58 @@
 import React, { useState } from 'react';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
-
-interface Position {
-    lat: number,
-    lng: number
-}
-
-interface Drivers {
-    driver_id: string,
-    location: { bearing : number, latitude: number, longitude: number }
-}
+import { Drivers, Position } from "../Interface";
+import {divIcon, DivIcon, DivIconOptions, IconOptions} from "leaflet";
 
 interface Props {
     data: { pickup_eta: number, drivers: Drivers[]}
+    position: Position;
 }
 
-const LeafletMap: React.FC<Props> = ({ data }) => {
-    const [position, setPosition] = useState<Position>({ lat: 51.5049375, lng: -0.0964509 });
-    console.log(data)
+const LeafletMap: React.FC<Props> = ({ data, position }) => {
+    const myCustomColour: string = '#583470';
+
+    const markerHtmlStyles = `
+      background-color: ${myCustomColour};
+      color: white;
+      width: 2rem;
+      height: 2rem;
+      display: block;
+      left: -1.5rem;
+      top: -1.5rem;
+      position: relative;
+      border-radius: 3rem 3rem 0;
+      transform: rotate(45deg);
+      border: 1px solid #FFFFFF`
+
+    const icon: DivIcon = divIcon({
+        className: "my-custom-pin",
+        iconAnchor: [0, 24],
+        // labelAnchor: [-6, 0],
+        popupAnchor: [0, -36],
+        html: `<span style='${markerHtmlStyles}'>HQ</span>`
+    })
+
     return (
-        data ? <div style={{ height: '600px'}}>
+        <div style={{ height: '600px'}}>
             <Map center={[position.lat, position.lng]} zoom={15} style={{ height: '600px'}}>
                 <TileLayer
                     attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                <Marker position={[position.lat, position.lng]}>
+                <Marker position={[position.lat, position.lng]} icon={icon}>
                     <Popup>
                         HQ bruhhhh
                     </Popup>
                 </Marker>
                 {data.drivers.map(driver => {
-                    return <Marker position={[driver.location.latitude, driver.location.longitude]}>
+                    return <Marker position={[driver.location.latitude, driver.location.longitude]} key={driver.driver_id}>
                         <Popup>
                             { driver.driver_id}
                         </Popup>
                     </Marker>
                 })}
             </Map>
-        </div> : <p>loadingg</p>
+        </div>
     )
 };
 
