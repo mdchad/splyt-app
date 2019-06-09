@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
-import { Drivers, Position } from "../Interface";
-import {divIcon, DivIcon, DivIconOptions, IconOptions} from "leaflet";
+import { Drivers, Position } from '../interface';
+import {divIcon, DivIcon} from 'leaflet';
 
 interface Props {
     data: { pickup_eta: number, drivers: Drivers[]}
@@ -22,26 +22,25 @@ const LeafletMap: React.FC<Props> = ({ data, position }) => {
       position: relative;
       border-radius: 3rem 3rem 0;
       transform: rotate(45deg);
-      border: 1px solid #FFFFFF`
+      border: 1px solid #FFFFFF`;
 
     const icon: DivIcon = divIcon({
         className: "my-custom-pin",
         iconAnchor: [0, 24],
-        // labelAnchor: [-6, 0],
         popupAnchor: [0, -36],
         html: `<span style='${markerHtmlStyles}'>HQ</span>`
-    })
+    });
 
     return (
         <div style={{ height: '600px'}}>
-            <Map center={[position.lat, position.lng]} zoom={15} style={{ height: '600px'}}>
+            <Map onClick={(e: any) => console.log(e.latlng.lat)} center={[position.lat, position.lng]} zoom={14} style={{ height: '600px'}}>
                 <TileLayer
                     attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
                 <Marker position={[position.lat, position.lng]} icon={icon}>
                     <Popup>
-                        HQ bruhhhh
+                        Splyt HQ
                     </Popup>
                 </Marker>
                 {data.drivers.map(driver => {
