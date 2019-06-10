@@ -2,7 +2,7 @@
   "name": "splyt-app",
   "version": "0.1.0",
   "private": true,
-  "homepage":"https://mdchad.github.io/splyt-app",
+  "homepage":"https://irsyad.dev/splyt-app",
   "dependencies": {
     "gh-pages": "^2.0.1",
     "leaflet": "^1.5.1",
