@@ -27,8 +27,8 @@ const App: React.FC = () => {
 
     useEffect(() => {
         fetchData()
-        // declare dependencies to trigger refetch when driver's count change
-}, [count, targetUrl]);
+        // declaring count dependency. When count state changed, useEffect get triggered to fetch the data
+}, [count]);
 
     return (
         <div className='App'>
