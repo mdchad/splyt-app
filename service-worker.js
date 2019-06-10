@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/splyt-app/precache-manifest.9ca6566a0437510c42cc34f6c8d1b77c.js"
+  "/splyt-app/precache-manifest.d4e4805932278f08bd147378a954075c.js"
 );
 
 self.addEventListener('message', (event) => {
