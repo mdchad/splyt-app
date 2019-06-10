@@ -15,6 +15,7 @@ const App: React.FC = () => {
     const fetchData = async () => {
         try {
             onLoad(true);
+            console.log('shgssd')
             const result: Response = await fetch(proxyUrl + targetUrl);
             const fetchedData: { pickup_eta: number, drivers: Drivers[] } = await result.json();
             setData(fetchedData);
@@ -35,7 +36,7 @@ const App: React.FC = () => {
                             text={'Fetching drivers'}>
                 <LeafletMap data={data} position={position}/>
             </LoadingOverlay>
-            <Settings count={count} setCount={setCount}/>
+            <Settings loading={loading} count={count} setCount={setCount}/>
         </div>
     );
 };

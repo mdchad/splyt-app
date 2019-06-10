@@ -12,12 +12,14 @@
     border: 1px solid #FFFFFF;
 }
 
-@media (min-device-width: 375px) {
-    .map-height {
-        height: 600px !important;
-    }
-}
 
 .map-height {
     height: 500px
+}
+
+
+@media (max-width: 375px) {
+    .map-height {
+        height: 650px;
+    }
 }

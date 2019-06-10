@@ -8,6 +8,7 @@ import './Settings.css';
 interface Props {
     count: number;
     setCount: (v: number) => void;
+    loading: boolean;
 }
 
 const handle = (props: any) => {
@@ -25,11 +26,11 @@ const handle = (props: any) => {
     );
 };
 
-const Settings: React.FC<Props> = ({ count, setCount }) => {
+const Settings: React.FC<Props> = ({ count, setCount, loading }) => {
     return (
         <div className='settings-wrapper' >
             <p>Drivers</p>
-            <Slider min={0} max={50} defaultValue={count} handle={handle} onAfterChange={(value) => setCount(value)}/>
+            <Slider disabled={loading} min={0} max={50} defaultValue={count} handle={handle} onAfterChange={(value) => setCount(value)}/>
             <span>{count}</span>
         </div>
     )
