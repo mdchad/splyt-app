@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "gh-pages": "^2.0.1",
     "leaflet": "^1.5.1",
     "rc-slider": "^8.6.12",
     "rc-tooltip": "^3.7.3",
