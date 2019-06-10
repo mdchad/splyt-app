@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/splyt-app/static/css/main.09b069da.chunk.css",
-    "main.js": "/splyt-app/static/js/main.d18b601f.chunk.js",
-    "main.js.map": "/splyt-app/static/js/main.d18b601f.chunk.js.map",
+    "main.css": "/splyt-app/static/css/main.f4cb6b7e.chunk.css",
+    "main.js": "/splyt-app/static/js/main.1c1c4a7a.chunk.js",
+    "main.js.map": "/splyt-app/static/js/main.1c1c4a7a.chunk.js.map",
     "runtime~main.js": "/splyt-app/static/js/runtime~main.6a458259.js",
     "runtime~main.js.map": "/splyt-app/static/js/runtime~main.6a458259.js.map",
     "static/css/2.20d67eb1.chunk.css": "/splyt-app/static/css/2.20d67eb1.chunk.css",
     "static/js/2.870a8999.chunk.js": "/splyt-app/static/js/2.870a8999.chunk.js",
     "static/js/2.870a8999.chunk.js.map": "/splyt-app/static/js/2.870a8999.chunk.js.map",
     "index.html": "/splyt-app/index.html",
-    "precache-manifest.df13c0e01bbad507102780184e16f621.js": "/splyt-app/precache-manifest.df13c0e01bbad507102780184e16f621.js",
+    "precache-manifest.9ca6566a0437510c42cc34f6c8d1b77c.js": "/splyt-app/precache-manifest.9ca6566a0437510c42cc34f6c8d1b77c.js",
     "service-worker.js": "/splyt-app/service-worker.js",
     "static/css/2.20d67eb1.chunk.css.map": "/splyt-app/static/css/2.20d67eb1.chunk.css.map",
-    "static/css/main.09b069da.chunk.css.map": "/splyt-app/static/css/main.09b069da.chunk.css.map"
+    "static/css/main.f4cb6b7e.chunk.css.map": "/splyt-app/static/css/main.f4cb6b7e.chunk.css.map"
   }
 }
