@@ -15,3 +15,5 @@ cd splyt-app
 npm install
 npm start
 ```
+
+or visit the [demo site](https://irsyad.dev/splyt-app)
