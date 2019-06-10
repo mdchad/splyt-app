@@ -1,7 +1,9 @@
 import React from 'react';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
-import { Drivers, Position } from '../interface';
+import { Drivers, Position } from '../../interface';
 import {divIcon, DivIcon} from 'leaflet';
+import './LeafletMap.css'
+import useWindowDimensions from "../../hooks/Dimension";
 
 interface Props {
     data: { pickup_eta: number, drivers: Drivers[]}
@@ -9,31 +11,19 @@ interface Props {
 }
 
 const LeafletMap: React.FC<Props> = ({ data, position }) => {
-    const myCustomColour: string = '#583470';
-
-    const markerHtmlStyles = `
-      background-color: ${myCustomColour};
-      color: white;
-      width: 2rem;
-      height: 2rem;
-      display: block;
-      left: -1.5rem;
-      top: -1.5rem;
-      position: relative;
-      border-radius: 3rem 3rem 0;
-      transform: rotate(45deg);
-      border: 1px solid #FFFFFF`;
+    const { height, width } = useWindowDimensions();
+    const zoom = width < 376 ? 13 : 14;
 
     const icon: DivIcon = divIcon({
-        className: "my-custom-pin",
+        className: '',
         iconAnchor: [0, 24],
         popupAnchor: [0, -36],
-        html: `<span style='${markerHtmlStyles}'>HQ</span>`
+        html: `<span class='custom-pin'>HQ</span>`
     });
 
     return (
-        <div style={{ height: '600px'}}>
-            <Map onClick={(e: any) => console.log(e.latlng.lat)} center={[position.lat, position.lng]} zoom={14} style={{ height: '600px'}}>
+        <div className='map-height'>
+            <Map center={[position.lat, position.lng]} zoom={zoom} className='map-height'>
                 <TileLayer
                     attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

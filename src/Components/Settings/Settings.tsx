@@ -3,6 +3,7 @@ import 'rc-tooltip/assets/bootstrap.css';
 import React from 'react';
 import Tooltip from 'rc-tooltip';
 import Slider, { Handle } from 'rc-slider';
+import './Settings.css';
 
 interface Props {
     count: number;
@@ -24,16 +25,12 @@ const handle = (props: any) => {
     );
 };
 
-const wrapperStyle: { width: number, margin : number } = { width: 400, margin: 50 };
-
 const Settings: React.FC<Props> = ({ count, setCount }) => {
     return (
-        <div>
-            <div style={wrapperStyle}>
-                <p>Drivers</p>
-                <Slider min={0} max={50} defaultValue={count} handle={handle} onAfterChange={(value) => setCount(value)}/>
-                <span>{count}</span>
-            </div>
+        <div className='settings-wrapper' >
+            <p>Drivers</p>
+            <Slider min={0} max={50} defaultValue={count} handle={handle} onAfterChange={(value) => setCount(value)}/>
+            <span>{count}</span>
         </div>
     )
 };
