@@ -9,13 +9,13 @@ const App: React.FC = () => {
     const [data, setData] = useState<{pickup_eta: number, drivers: Drivers[]}>({ pickup_eta: 0, drivers: [] });
     const [loading, onLoad] = useState<boolean>(false);
     const [count, setCount] = useState<number>(1);
-    const [position, setPosition] = useState<Position>({ lat: 51.5049375, lng: -0.0964509 });
+    const [position] = useState<Position>({ lat: 51.5049375, lng: -0.0964509 });
+    // need proxy as it cannot bypass CORS error
     const proxyUrl: string = 'https://cors-anywhere.herokuapp.com/';
     const targetUrl: string = `https://qa-interview-test.qa.splytech.io/api/drivers?latitude=${position.lat}&longitude=${position.lng}&count=${count}`;
     const fetchData = async () => {
         try {
             onLoad(true);
-            console.log('shgssd')
             const result: Response = await fetch(proxyUrl + targetUrl);
             const fetchedData: { pickup_eta: number, drivers: Drivers[] } = await result.json();
             setData(fetchedData);
@@ -27,6 +27,7 @@ const App: React.FC = () => {
 
     useEffect(() => {
         fetchData()
+        // declare dependencies to trigger refetch when driver's count change
 }, [count, targetUrl]);
 
     return (

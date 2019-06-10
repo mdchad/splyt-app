@@ -4,14 +4,15 @@ import { Drivers, Position } from '../../interface';
 import {divIcon, DivIcon} from 'leaflet';
 import './LeafletMap.css'
 import useWindowDimensions from "../../hooks/Dimension";
+import DriversMarker from "./DriversMarker/DriversMarker";
 
 interface Props {
     data: { pickup_eta: number, drivers: Drivers[]}
     position: Position;
 }
 
-const LeafletMap: React.FC<Props> = ({ data, position }) => {
-    const { height, width } = useWindowDimensions();
+const LeafletMap: React.FC<Props> = ({ position, data }) => {
+    const { width } = useWindowDimensions();
     const zoom = width < 376 ? 13 : 14;
 
     const icon: DivIcon = divIcon({
@@ -33,13 +34,7 @@ const LeafletMap: React.FC<Props> = ({ data, position }) => {
                         Splyt HQ
                     </Popup>
                 </Marker>
-                {data.drivers.map(driver => {
-                    return <Marker position={[driver.location.latitude, driver.location.longitude]} key={driver.driver_id}>
-                        <Popup>
-                            { driver.driver_id}
-                        </Popup>
-                    </Marker>
-                })}
+                <DriversMarker data={data}/>
             </Map>
         </div>
     )
